@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts Fallback ─────────────────────────────────────────── */
+:root {
+  --font-display: "Rajdhani", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --font-body: "DM Sans", sans-serif;
+
+  --color-red: #e10600;
+  --color-red-dark: #b30500;
+  --color-orange: #ff7c2a;
+  --color-bg: #0a0a0a;
+  --color-card: #161616;
+  --color-border: #2a2a2a;
+}
+
+/* ── Base ──────────────────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #e8e8e8;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+/* ── Grid background ───────────────────────────────────────────────── */
+.bg-grid {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e10600;
+}
+
+/* ── Animations ────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-red {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(225, 6, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(225, 6, 0, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* ── Staggered children ────────────────────────────────────────────── */
+.stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger > *:nth-child(4) { animation-delay: 0.20s; }
+.stagger > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger > *:nth-child(6) { animation-delay: 0.30s; }
+.stagger > *:nth-child(7) { animation-delay: 0.35s; }
+.stagger > *:nth-child(8) { animation-delay: 0.40s; }
+
+/* ── Card ──────────────────────────────────────────────────────────── */
+.card {
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  border-color: #3a3a3a;
+}
+
+.card-red:hover {
+  border-color: rgba(225, 6, 0, 0.4);
+}
+
+/* ── Red accent line ───────────────────────────────────────────────── */
+.accent-line {
+  position: relative;
+}
+
+.accent-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-red);
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── Position badge ────────────────────────────────────────────────── */
+.pos-badge {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  min-width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+.pos-1 { background: #FFD700; color: #0A0A0A; }
+.pos-2 { background: #C0C0C0; color: #0A0A0A; }
+.pos-3 { background: #CD7F32; color: #0A0A0A; }
+.pos-other { background: #1C1C1C; color: #9B9B9B; border: 1px solid #2A2A2A; }
+.pos-dnf { background: #1C1C1C; color: #E10600; border: 1px solid #2A2A2A; }
+
+/* ── Team color dots ───────────────────────────────────────────────── */
+.team-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* ── Recharts overrides ────────────────────────────────────────────── */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: #1e1e1e;
+}
+
+.recharts-tooltip-wrapper .custom-tooltip {
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+/* ── Select ────────────────────────────────────────────────────────── */
+.f1-select {
+  background: #161616;
+  border: 1px solid #2a2a2a;
+  color: #e8e8e8;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239B9B9B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+}
+
+.f1-select:focus {
+  border-color: var(--color-red);
+}
+
+.f1-select option {
+  background: #1c1c1c;
+}

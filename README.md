@@ -36,7 +36,7 @@ A full-stack Formula 1 data dashboard built as a portfolio project. Displays rac
 ### Run with Docker (recommended)
 
 ```bash
-git clone https://github.com/yourusername/f1-dashboard
+git clone https://github.com/Tomi-Molina/f1-dashboard
 cd f1-dashboard
 
 docker compose up --build
